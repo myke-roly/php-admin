@@ -1,6 +1,7 @@
 <?php 
 	include "header.php";
-	$link = mysqli_connect ('localhost', 'root', '', 'catalogo');
+	require "conexion.php";
+	// $link = mysqli_connect ('localhost', 'root', '', 'catalogo');
 
 	$sql = 'SELECT idUsuario, usuNombre, usuApellido, usuEmail
 	FROM usuarios';
@@ -24,36 +25,24 @@
 				<th>Nombre</th>
 				<th>Apellido</th>
 				<th>Email</th>
-		
+	
 				<th colspan="2">
 					<a href="formAgregarUsuarios.php"><img src="images/add.png" alt="mas"></a>
 				</th>
-
 			</tr>
 
 <?php 
-	while ($lista = mysqli_fetch_assoc ($resultado) ){
-		
-	?>
-
+	while ($lista = mysqli_fetch_assoc ($resultado) ){		
+?>
 			<tr>
 				<td><?php echo $lista['idUsuario']; ?></td>
 				<td><?php echo $lista['usuNombre']; ?></td>
 				<td><?php echo $lista['usuApellido']; ?></td>
 				<td><?php echo $lista['usuEmail']; ?></td>
-	
 				<td><a href="formEditarUsuario.php"><img src="images/editar.png" alt=""></a></td>
 				<td><a href="formBorrarUsuario.php"><img src="images/eliminar.png" alt=""></a></td>
-				
-
 			</tr>
-<?php
-}
-
-?>
-
+<?php } ?>
 		</table>
-	
-
 </section>
 <?php include "footer.php"; ?>
